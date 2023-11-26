@@ -24,11 +24,9 @@ const ListPage = (props: Props) => {
   }, []);
 
   useEffect(() => {
-    if (!keyword) {
-      return;
-    }
+    const query = !keyword ? '' : `/search?q=${keyword}`;
 
-    fetchUsers(`/search?q=${keyword}`);
+    fetchUsers(query);
   }, [keyword]);
 
   const fetchUsers = useCallback(async (keyword?: string) => {
